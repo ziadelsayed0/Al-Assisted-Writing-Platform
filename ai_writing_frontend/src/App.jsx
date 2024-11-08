@@ -1,7 +1,7 @@
 import './App.css'
 import React, { useEffect } from "react"
 import {BrowserRouter,Routes,Route} from "react-router-dom"
-import ChatWindow from './pages/ChatWindow'
+import ChatWindow from './pages/MainApp'
 import StartWindow from './pages/StartWindow'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
