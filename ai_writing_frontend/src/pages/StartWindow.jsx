@@ -19,7 +19,7 @@ function StartWindow() {
     {/* Right Side - Image/Graphic */}
     <div className="w-1/2 bg-gray-100 flex items-center justify-center">
       <img
-        src="../public/img/technology.jpg" // Replace with your image URL
+        src="../img/technology.jpg" // Replace with your image URL
         alt="Welcome Graphic"
         className="w-3/4 h-auto rounded-lg shadow-lg"
       />
