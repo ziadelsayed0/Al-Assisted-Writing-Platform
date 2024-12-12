@@ -1,9 +1,15 @@
 // src/components/MessagesArea.js
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const MessagesArea = ({ messages }) => {
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
-    <div className="flex-1 overflow-y-auto p-4 bg-gray-500 space-y-4">
+    <div className="flex-1 overflow-y-auto p-4 bg-gray-100 space-y-4">
       {messages.map((message, index) => (
         <div
           key={index}
@@ -22,6 +28,7 @@ const MessagesArea = ({ messages }) => {
           </div>
         </div>
       ))}
+      <div ref={messagesEndRef} />
     </div>
   );
 };

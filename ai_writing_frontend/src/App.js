@@ -1,10 +1,10 @@
 // src/App.js
 import React, { useState } from "react";
 import axios from "axios";
-import Sidebar from "../components/Sidebar";
-import ChatHeader from "../components/ChatHeader";
-import MessagesArea from "../components/MessagesArea";
-import InputArea from "../components/InputArea";
+import Sidebar from "./components/Sidebar";
+import ChatHeader from "./components/ChatHeader";
+import MessagesArea from "./components/MessagesArea";
+import InputArea from "./components/InputArea";
 
 function App() {
   const [messages, setMessages] = useState([

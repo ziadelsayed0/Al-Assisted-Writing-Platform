@@ -12,13 +12,14 @@ const InputArea = ({ onSend }) => {
   };
 
   return (
-    <div className="flex items-center p-4 bg-gray-500  border-gray-300 shadow-md">
+    <div className="flex items-center p-4 bg-gray-200 border-t border-gray-300 rounded-b-lg shadow-md">
       <input
         type="text"
         className="flex-1 px-4 py-2 mr-2 bg-white border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 shadow"
         placeholder="Type your message..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleSend()}
       />
       <button
         onClick={handleSend}
