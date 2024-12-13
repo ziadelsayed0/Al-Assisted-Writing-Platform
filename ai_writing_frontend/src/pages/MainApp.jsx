@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
@@ -12,6 +11,7 @@ function App() {
   ]);
 
   const handleSend = async (text) => {
+    console.log("User input received:", text); 
     const userMessage = { text, sender: "user" };
     setMessages((prev) => [...prev, userMessage]);
 
@@ -25,15 +25,21 @@ function App() {
   // Function to call OpenAI API
   const getBotResponse = async (message) => {
     try {
+      const apiKey = process.env.REACT_APP_OPENAI_API_KEY; // React-specific environment variable access
+      console.log("api:", apiKey); 
+      if (!apiKey) {
+        throw new Error("API key is not set");
+      }
+  
       const response = await axios.post(
         "https://api.openai.com/v1/chat/completions",
         {
-          model: "gpt-3.5-turbo", // Or "gpt-4" depending on your access
+          model: "gpt-3.5-turbo",
           messages: [{ role: "user", content: message }],
         },
         {
           headers: {
-            Authorization: `Bearer YOUR_OPENAI_API_KEY`,
+            Authorization: `Bearer ${apiKey}`,
           },
         }
       );
@@ -43,6 +49,7 @@ function App() {
       return "Sorry, I couldn't understand that. Please try again.";
     }
   };
+  
 
   return (
     <div className="flex h-screen bg-gray-100">

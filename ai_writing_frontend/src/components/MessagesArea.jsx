@@ -1,4 +1,3 @@
-// src/components/MessagesArea.js
 import React, { useEffect, useRef } from "react";
 
 const MessagesArea = ({ messages }) => {
@@ -7,6 +6,8 @@ const MessagesArea = ({ messages }) => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  if (!messages || !Array.isArray(messages)) return null;
 
   return (
     <div className="flex-1 overflow-y-auto p-4 bg-gray-100 space-y-4">
@@ -24,7 +25,10 @@ const MessagesArea = ({ messages }) => {
                 : "bg-gray-200 text-gray-900 rounded-tl-none"
             } max-w-xs`}
           >
-            {message.text}
+            <p>{message.text}</p>
+            <span className="text-xs text-gray-500 block mt-1">
+              {new Date().toLocaleTimeString()}
+            </span>
           </div>
         </div>
       ))}
